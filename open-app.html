@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mở Ứng Dụng</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="https://localhost:8000/open-app.html" />
+
+    <script type="text/javascript">
+      // URL đến ứng dụng trên App Store (ví dụ: https://apps.apple.com/us/app/instagram/id389801252)
+      // Thay {your-app-slug} bằng phần tên trong URL App Store, {your-app-store-id} bằng ID số
+      var appStoreURL =
+        "https://apps.apple.com/us/app/{your-app-slug}/id{your-app-store-id}";
+
+      // URL đến ứng dụng trên Google Play Store (ví dụ: https://play.google.com/store/apps/details?id=com.instagram.android)
+      // Thay {your-android-package-name} bằng package name của ứng dụng Android của bạn
+      var googlePlayURL =
+        "https://play.google.com/store/apps/details?id={your-android-package-name}";
+
+      // URI Scheme tùy chỉnh của ứng dụng bạn (đã cấu hình trong ứng dụng iOS và Android)
+      // Đây là scheme dùng để thử mở ứng dụng từ trình duyệt nếu App Links/Universal Links không hoạt động
+      // Ví dụ: "myapp://", "yourcoolapp://", "com.yourcompany.yourapp://"
+      var appScheme = "{your-app-scheme}://";
+
+      // Lấy URL đầy đủ của trang hiện tại mà người dùng đang truy cập (ví dụ: https://your-domain.com/open-app.html?item_id=123)
+      var currentUrl = window.location.href;
+
+      function redirectToAppOrStore() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Kiểm tra nếu là Android
+        if (/android/i.test(userAgent)) {
+          // Đối với Android, chúng ta thử mở ứng dụng bằng URI scheme tùy chỉnh trước.
+          // Nếu ứng dụng đã cài đặt và xử lý scheme này, nó sẽ mở ra.
+          // Nếu không (ứng dụng chưa cài hoặc không xử lý scheme), trình duyệt sẽ không làm gì hoặc báo lỗi.
+          // Chúng ta sẽ sử dụng timeout để, nếu sau một khoảng thời gian mà trang vẫn còn đây
+          // (tức là ứng dụng không mở), thì chuyển hướng đến Play Store.
+
+          // Gắn URL đầy đủ của trang web hiện tại vào scheme để ứng dụng có thể phân tích Deep Link.
+          // EncodeURIComponent đảm bảo các ký tự đặc biệt trong URL được xử lý đúng.
+          var deepLinkAttemptUrl = appScheme + encodeURIComponent(currentUrl);
+
+          // Cố gắng mở ứng dụng bằng URI scheme
+          window.location.href = deepLinkAttemptUrl;
+
+          // Đặt timeout để chuyển hướng đến Play Store nếu ứng dụng không mở
+          // Thời gian chờ đủ ngắn để không làm người dùng đợi lâu, nhưng đủ dài để hệ điều hành có thời gian phản hồi scheme.
+          setTimeout(function () {
+            // Kiểm tra lại userAgent để chắc chắn vẫn là Android (phòng trường hợp chuyển hướng quá nhanh)
+            if (
+              /android/i.test(
+                navigator.userAgent || navigator.vendor || window.opera
+              )
+            ) {
+              window.location.href = googlePlayURL;
+            }
+          }, 750); // Thời gian chờ 750ms (có thể điều chỉnh)
+        }
+        // Kiểm tra nếu là iOS (iPhone, iPad, iPod)
+        // Universal Links trên iOS có cơ chế riêng, nếu ứng dụng cài đặt và cấu hình đúng,
+        // iOS sẽ chặn link này trước khi trình duyệt kịp tải trang open-app.html.
+        // Do đó, nếu người dùng thực sự đến được trang này trên thiết bị iOS,
+        // điều đó có nghĩa là Universal Link đã không hoạt động (ứng dụng chưa cài, bị lỗi, hoặc người dùng đã tắt).
+        // Trong trường hợp này, chúng ta chuyển hướng thẳng đến App Store.
+        else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          window.location.href = appStoreURL;
+        }
+
+        // Các trường hợp khác (Ví dụ: trình duyệt Desktop) - Tùy chọn xử lý
+        else {
+          // Bạn có thể chuyển hướng đến trang chủ website, hiển thị mã QR,
+          // hoặc hiển thị thông báo hướng dẫn người dùng mở trên điện thoại.
+          // window.location.href = "https://{your-domain.com}/"; // Ví dụ: chuyển hướng đến trang chủ
+          console.log(
+            "Thiết bị không phải iOS hoặc Android, không chuyển hướng đến cửa hàng ứng dụng."
+          );
+          // Để trống nếu không muốn làm gì khác
+        }
+      }
+
+      // Chạy hàm chuyển hướng ngay khi script được tải
+      redirectToAppOrStore();
+
+      // Nếu vì lý do nào đó script không chạy hoặc người dùng nhấp lại
+      // Bạn có thể thêm một nút trong body để gọi lại hàm này
+    </script>
+    <style>
+      /* Tùy chọn: Thêm một chút CSS để trang không quá trống rỗng */
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Nếu ứng dụng không tự động mở, vui lòng truy cập cửa hàng ứng dụng:</p>
+    <p>
+      <a href="{your-app-store-link-fallback-or-homepage}" id="fallback-link"
+        >Chuyển hướng đến cửa hàng ứng dụng...</a
+      >
+    </p>
+
+    <script>
+      // Cập nhật link fallback để chắc chắn nó trỏ đúng (dù JavaScript chính đã chạy)
+      // Dành cho trường hợp cực hiếm hoặc khi JS bị tắt
+      var isAndroid = /android/i.test(
+        navigator.userAgent || navigator.vendor || window.opera
+      );
+      var isiOS =
+        /iPad|iPhone|iPod/.test(
+          navigator.userAgent || navigator.vendor || window.opera
+        ) && !window.MSStream;
+
+      var fallbackLink = document.getElementById("fallback-link");
+      if (fallbackLink) {
+        if (isAndroid) {
+          fallbackLink.href = googlePlayURL;
+        } else if (isiOS) {
+          fallbackLink.href = appStoreURL;
+        } else {
+          // Link cho Desktop hoặc khác
+          // fallbackLink.href = "https://{your-domain.com}/"; // Ví dụ
+        }
+      }
+      // Nếu JS chính ở trên hoạt động, người dùng sẽ không thấy và nhấp vào link này
+    </script>
+  </body>
+</html>
