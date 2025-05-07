@@ -6,6 +6,11 @@
         "appID": "D5NVNWQFKD.vn.zyyx.ohajumpapp.store",
         "paths": [
           "*"
+        ],
+        "components": [
+          {
+            "/": "/*"
+          }
         ]
       }
     ]
