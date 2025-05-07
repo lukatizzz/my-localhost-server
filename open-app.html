@@ -4,26 +4,26 @@
     <title>Mở Ứng Dụng</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="canonical" href="https://localhost:8000/open-app.html" />
+    <link rel="canonical" href="https://jumpapp.netlify.app/open-app.html" />
 
     <script type="text/javascript">
       // URL đến ứng dụng trên App Store (ví dụ: https://apps.apple.com/us/app/instagram/id389801252)
       // Thay {your-app-slug} bằng phần tên trong URL App Store, {your-app-store-id} bằng ID số
       var appStoreURL =
-        "https://apps.apple.com/us/app/{your-app-slug}/id{your-app-store-id}";
+        "https://t4.zyyx.vn/salice/";
 
       // URL đến ứng dụng trên Google Play Store (ví dụ: https://play.google.com/store/apps/details?id=com.instagram.android)
       // Thay {your-android-package-name} bằng package name của ứng dụng Android của bạn
       var googlePlayURL =
-        "https://play.google.com/store/apps/details?id={your-android-package-name}";
+        "https://t4.zyyx.vn/salice/";
 
       // URI Scheme tùy chỉnh của ứng dụng bạn (đã cấu hình trong ứng dụng iOS và Android)
       // Đây là scheme dùng để thử mở ứng dụng từ trình duyệt nếu App Links/Universal Links không hoạt động
       // Ví dụ: "myapp://", "yourcoolapp://", "com.yourcompany.yourapp://"
-      var appScheme = "{your-app-scheme}://";
+      // var appScheme = "{your-app-scheme}://";
 
       // Lấy URL đầy đủ của trang hiện tại mà người dùng đang truy cập (ví dụ: https://your-domain.com/open-app.html?item_id=123)
-      var currentUrl = window.location.href;
+      // var currentUrl = window.location.href;
 
       function redirectToAppOrStore() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -38,10 +38,10 @@
 
           // Gắn URL đầy đủ của trang web hiện tại vào scheme để ứng dụng có thể phân tích Deep Link.
           // EncodeURIComponent đảm bảo các ký tự đặc biệt trong URL được xử lý đúng.
-          var deepLinkAttemptUrl = appScheme + encodeURIComponent(currentUrl);
+          // var deepLinkAttemptUrl = appScheme + encodeURIComponent(currentUrl);
 
           // Cố gắng mở ứng dụng bằng URI scheme
-          window.location.href = deepLinkAttemptUrl;
+          // window.location.href = deepLinkAttemptUrl;
 
           // Đặt timeout để chuyển hướng đến Play Store nếu ứng dụng không mở
           // Thời gian chờ đủ ngắn để không làm người dùng đợi lâu, nhưng đủ dài để hệ điều hành có thời gian phản hồi scheme.
