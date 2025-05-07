@@ -1,0 +1,18 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "D5NVNWQFKD.vn.zyyx.ohajumpapp.store",
+        "paths": [
+          "/open-app.html"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "D5NVNWQFKD.vn.zyyx.ohajumpapp.store"
+    ]
+  }
+}
