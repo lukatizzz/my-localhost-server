@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "vn.zyyx.ohajumpapp.store",
       "sha256_cert_fingerprints": [
-        "C5:A9:38:27:B3:FE:D0:7A:08:B7:13:26:F2:F1:90:CC:E9:CC:9A:D5:17:AA:D0:81:1D:09:C2:2E:B7:E0:5C:5B"
+        "C5:A9:38:27:B3:FE:D0:7A:08:B7:13:26:F2:F1:90:CC:E9:CC:9A:D5:17:AA:D0:81:1D:09:C2:2E:B7:E0:5C:5B",
+        "EB:DA:67:02:BB:B6:0E:A8:F3:AB:9B:FF:77:C2:96:B6:F3:81:F4:35:57:C9:87:A3:04:1D:85:BF:7E:41:C9:9B"
       ]
     }
   }
