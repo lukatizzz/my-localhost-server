@@ -41,7 +41,7 @@
             } else if (/android/i.test(userAgent)) {
                 // Thiết bị Android
                 // Thử mở ứng dụng bằng scheme URL
-                window.location.href = appScheme;
+                window.location = appScheme;
                 fallbackUrl = fallbackUrlAndroid;
             }
 
