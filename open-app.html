@@ -22,7 +22,7 @@
 
     <script>
         // Cấu hình: Thay thế các URL này bằng URL của ứng dụng của bạn
-        const appScheme = 'jumpapp://open.my.app'; // Thay thế bằng scheme URL của ứng dụng của bạn (ví dụ: myapp://)
+        // const appScheme = 'jumpapp://open.my.app'; // Thay thế bằng scheme URL của ứng dụng của bạn (ví dụ: myapp://)
         const fallbackUrlIOS = 'https://apps.apple.com/us/app/your-app-id'; // Thay thế bằng URL App Store của ứng dụng
         const fallbackUrlAndroid = 'https://play.google.com/store/apps/details?id=your.package.name'; // Thay thế bằng URL Google Play Store của ứng dụng
         const fallbackUrlWebsite = 'https://www.google.com/'; // URL dự phòng nếu không phải iOS/Android hoặc muốn chuyển hướng đến website
@@ -41,7 +41,7 @@
             } else if (/android/i.test(userAgent)) {
                 // Thiết bị Android
                 // Thử mở ứng dụng bằng scheme URL
-                window.location = appScheme;
+                // window.location = appScheme;
                 fallbackUrl = fallbackUrlAndroid;
             }
 
