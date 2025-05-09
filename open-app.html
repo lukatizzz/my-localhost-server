@@ -43,15 +43,15 @@
                 fallbackUrl = fallbackUrlAndroid;
             }
 
-            try {
+            
                 // Thử mở ứng dụng bằng scheme URL
                 window.location.href = appScheme;
-            } catch (e) {
+           
                 // Đặt hẹn giờ để chuyển hướng đến URL dự phòng nếu ứng dụng không mở
                 setTimeout(function() {
                     window.location.href = fallbackUrl;
                 }, fallbackDelay);
-            } 
+            
         }
 
         // Chạy hàm khi trang được tải
