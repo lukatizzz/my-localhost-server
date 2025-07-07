@@ -3,7 +3,29 @@
     "apps": [],
     "details": [
       {
-        "appID": "D5NVNWQFKD.vn.zyyx.ohajumpapp.store",
+        "appID": "MKPFZKJJW6.jp.zyyx.oha.jumpapp.dev.trader",
+        "paths": [
+          "*"
+        ],
+        "components": [
+          {
+            "/": "/*"
+          }
+        ]
+      },
+      {
+        "appID": "MKPFZKJJW6.jp.zyyx.oha.jumpapp.dev",
+        "paths": [
+          "*"
+        ],
+        "components": [
+          {
+            "/": "/*"
+          }
+        ]
+      },
+      {
+        "appID": "NF2ZR4R9P7.com.fpt.shingenpro",
         "paths": [
           "*"
         ],
@@ -17,7 +39,9 @@
   },
   "webcredentials": {
     "apps": [
-      "D5NVNWQFKD.vn.zyyx.ohajumpapp.store"
+      "MKPFZKJJW6.jp.zyyx.oha.jumpapp.dev.trader",
+      "MKPFZKJJW6.jp.zyyx.oha.jumpapp.dev",
+      "NF2ZR4R9P7.com.fpt.shingenpro"
     ]
   }
 }
