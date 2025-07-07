@@ -11,7 +11,30 @@
             padding-top: 50px;
         }
         .message {
-            margin-bottom: 20px;
+            margin-bottom: 50px;
+        }
+        .input-container {
+            margin: 50px 0;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -19,8 +42,33 @@
 
     <div>Test app link</div>
 
+    <div class="input-container">
+        <input type="text" id="linkInput" placeholder="Paste your link here..." />
+        <button onclick="openLink()">Go to Link</button>
+    </div>
 
-    <button onclick="window.open('open-app.html', '_blank')">Open App</button>
+
+    <script>
+        function openLink() {
+            const link = document.getElementById('linkInput').value.trim();
+            if (link) {
+                if (!link.startsWith('http://') && !link.startsWith('https://')) {
+                    window.open('https://' + link, '_blank');
+                } else {
+                    window.open(link, '_blank');
+                }
+            } else {
+                alert('Please enter a link first!');
+            }
+        }
+        
+        // Allow Enter key to trigger the button
+        document.getElementById('linkInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                openLink();
+            }
+        });
+    </script>
 
 </body>
 </html>
