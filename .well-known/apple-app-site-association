@@ -4,6 +4,9 @@
     "details": [
       {
         "appID": "MKPFZKJJW6.jp.zyyx.oha.jumpapp.dev.trader",
+        "paths": [
+          "/open-app.html"
+        ],
         "components": [
           {
             "/": "/open-app.html"
@@ -12,6 +15,9 @@
       },
       {
         "appID": "MKPFZKJJW6.jp.zyyx.oha.jumpapp.dev",
+        "paths": [
+          "/open-app.html"
+        ],
         "components": [
           {
             "/": "/open-app.html"
@@ -20,6 +26,9 @@
       },
       {
         "appID": "NF2ZR4R9P7.com.fpt.shingenpro",
+        "paths": [
+          "/open-app.html"
+        ],
         "components": [
           {
             "/": "/open-app.html"
