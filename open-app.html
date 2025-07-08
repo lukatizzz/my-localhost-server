@@ -22,7 +22,6 @@
 
     <script>
         // Configuration: Replace these URLs with your app's URLs
-        const appScheme = 'jumpapp://open.my.app'; // Replace with your app's URL scheme (e.g., myapp://) for android
         const fallbackUrlIOS = 'https://apps.apple.com/us/app/your-app-id'; // Replace with your app's App Store URL
         const fallbackUrlAndroid = 'https://play.google.com/store/apps/details?id=your.package.name'; // Replace with your app's Google Play Store URL
         const fallbackUrlWebsite = 'https://www.google.com/'; // Fallback URL if not iOS/Android or if you want to redirect to a website
@@ -41,8 +40,6 @@
             } else if (/android/i.test(userAgent)) {
                 // Android device
                 fallbackUrl = fallbackUrlAndroid;
-                // Try opening the app using the URL scheme
-                window.location.href = appScheme;
             }
                 // Try opening the app using the URL scheme 
                 // Set a timer to redirect to the fallback URL if the app doesn't open
