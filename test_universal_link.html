@@ -42,32 +42,16 @@
 
     <div>Test app link</div>
 
+
+
     <div class="input-container">
-        <button onclick="openLink()">Go to Link</button>
+        <a href="https://t4.zyyx.vn/oha_jumpapp/open-app.html" target="_blank" style="text-decoration:none;">
+            <button type="button">Go to link</button>
+        </a>
     </div>
 
 
-    <script>
-        function openLink() {
-            const link = "https://jumpapp.netlify.app/open-app.html";
-            if (link) {
-                if (!link.startsWith('http://') && !link.startsWith('https://')) {
-                    window.open('https://' + link, '_blank');
-                } else {
-                    window.open(link, '_blank');
-                }
-            } else {
-                alert('Please enter a link first!');
-            }
-        }
-        
-        // Allow Enter key to trigger the button
-        document.getElementById('linkInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                openLink();
-            }
-        });
-    </script>
+
 
 </body>
 </html>
