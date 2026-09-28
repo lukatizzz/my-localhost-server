@@ -49,24 +49,10 @@
 
     <script>
         function openLink() {
-            const link = "https://jumpapp.netlify.app/open-app.html";
-            if (link) {
-                if (!link.startsWith('http://') && !link.startsWith('https://')) {
-                    window.open('https://' + link, '_blank');
-                } else {
-                    window.open(link, '_blank');
-                }
-            } else {
-                alert('Please enter a link first!');
-            }
+            // Resolve relative to this page so it works on any host serving /oha_jumpapp/
+            const link = new URL('open-app.html', window.location.href).href;
+            window.open(link, '_blank');
         }
-        
-        // Allow Enter key to trigger the button
-        document.getElementById('linkInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                openLink();
-            }
-        });
     </script>
 
 </body>
